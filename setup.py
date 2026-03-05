@@ -7,9 +7,9 @@ from setuptools import setup, find_packages
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-version = 'x.y.z'
-if os.path.exists('VERSION'):
-  version = open('VERSION').read().strip()
+import re
+with open('socru/__init__.py') as f:
+    version = re.search(r"__version__ = '(.*?)'", f.read()).group(1)
 
 setup(
     name='socru',
@@ -21,10 +21,9 @@ setup(
     author_email='andrew.page@quadram.ac.uk',
     url='https://github.com/quadram-institute-bioscience/socru',
     scripts=glob.glob('scripts/*'),
-    test_suite='nose.collector',
-    tests_require=['nose >= 1.3'],
+    python_requires='>=3.8',
     install_requires=[
-           'biopython >= 1.68',
+           'biopython >= 1.78',
            'PyYAML',
            'numpy',
            'matplotlib'

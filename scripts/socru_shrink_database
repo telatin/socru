@@ -2,16 +2,11 @@
 import sys
 import argparse
 import os
-import pkg_resources
+from socru import __version__ as version
 sys.path.append('../')
 sys.path.append('./')
 from socru.SocruShrinkDatabase import SocruShrinkDatabase
 
-version = ''
-try:
-	version = pkg_resources.get_distribution("socru").version
-except pkg_resources.DistributionNotFound:
-	version = 'x.y.z'
 
 parser = argparse.ArgumentParser(
 	description = 'Admin utility take a database and blast results and create a new shrunk database',

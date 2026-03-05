@@ -20,8 +20,9 @@ class Fasta:
                 for record in SeqIO.parse(handle, "fasta"):
                     largest_contig = self.largest_contig_check( largest_contig, record)
         else:
-            for record in SeqIO.parse(self.input_file, "fasta"):
-                largest_contig = self.largest_contig_check( largest_contig, record)
+            with open(self.input_file) as handle:
+                for record in SeqIO.parse(handle, "fasta"):
+                    largest_contig = self.largest_contig_check( largest_contig, record)
 
         return largest_contig
         

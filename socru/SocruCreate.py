@@ -2,7 +2,6 @@
 import os
 import sys
 import time
-import pkg_resources
 import subprocess
 from tempfile import mkstemp
 
@@ -35,9 +34,9 @@ class SocruCreate:
             os.makedirs(self.output_directory)
             
         if self.dnaa_fasta is None:
-            self.dnaa_fasta = str(pkg_resources.resource_filename( __name__, 'data/dnaA.fa.gz'))
+            self.dnaa_fasta = os.path.join(os.path.dirname(__file__), 'data', 'dnaA.fa.gz')
         if self.dif_fasta is None:
-            self.dif_fasta = str(pkg_resources.resource_filename( __name__, 'data/dif.fa.gz'))
+            self.dif_fasta = os.path.join(os.path.dirname(__file__), 'data', 'dif.fa.gz')
         
     def run(self):
         # run the fasta through barrnap

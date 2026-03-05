@@ -1,7 +1,5 @@
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
-from Bio.Seq import Seq
-from Bio.Alphabet import generic_dna
 
 import os
 import re

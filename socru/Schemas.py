@@ -1,13 +1,12 @@
 import os
 from os import listdir
 from os.path import isdir
-import pkg_resources
 import yaml
 
 class Schemas:
     def __init__(self, verbose):
         self.verbose = verbose
-        self.base_directory = str(pkg_resources.resource_filename( __name__, 'data/'))
+        self.base_directory = os.path.join(os.path.dirname(__file__), 'data')
     
     def all_available(self):
         return [ d for d in listdir(self.base_directory) if isdir(os.path.join(self.base_directory, d))]

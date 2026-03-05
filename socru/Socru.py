@@ -6,7 +6,6 @@ import time
 import subprocess
 from tempfile import mkstemp
 from tempfile import mkdtemp
-import pkg_resources
 import shutil
 
 from socru.Fasta import Fasta

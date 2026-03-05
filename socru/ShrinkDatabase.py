@@ -6,6 +6,7 @@ import shutil
 import subprocess
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
+from Bio.Seq import Seq
 from socru.FilterBlast import FilterBlast
 from socru.Fasta import Fasta
 
@@ -47,7 +48,7 @@ class ShrinkDatabase:
                     output_filenames.append(destination_filename)
             else:
                 blocks = fb.identify_regions(f.fragment_number(), self.target_bases)
-                sequence = ""
+                sequence = Seq("")
                 for b in blocks:
                     sequence += f.chromosome.seq[(b[0]):(b[1])]
                 record = [SeqRecord(sequence, str(f.fragment_number()) , '', '')]
