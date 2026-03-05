@@ -1,0 +1,34 @@
+name: Test Installation
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Micromamba
+        uses: mamba-org/setup-micromamba@v1
+        with:
+          environment-name: socru-test
+          create-args: >-
+            python=3.11
+            barrnap
+            blast
+            pytest
+          init-shell: bash
+
+      - name: Install package
+        run: pip install .
+
+      - name: Run tests
+        run: pytest socru/tests/ -v
